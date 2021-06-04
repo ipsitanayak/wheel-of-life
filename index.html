@@ -44,19 +44,15 @@ chart = am4core.create("chartdiv", am4charts.RadarChart);
 chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
 chart.data = [ {
-  "category": "Health",
+  "category": "Physical Environment",
   "value": 0,
   "color": chart.colors.next()
 }, {
-  "category": "Career",
+  "category": "Physical Health",
   "value": 0,
   "color": chart.colors.next()
 }, {
-  "category": "Love",
-  "value": 0,
-  "color": chart.colors.next()
-}, {
-  "category": "Spirituality",
+  "category": "Mental Health",
   "value": 0,
   "color": chart.colors.next()
 }, {
@@ -64,15 +60,39 @@ chart.data = [ {
   "value": 0,
   "color": chart.colors.next()
 }, {
-  "category": "Money",
+  "category": "Friendships",
   "value": 0,
   "color": chart.colors.next()
 }, {
-  "category": "Fun",
+  "category": "Romantic relationships",
   "value": 0,
   "color": chart.colors.next()
 }, {
-  "category": "Friends",
+  "category": "Wealth & finances",
+  "value": 0,
+  "color": chart.colors.next()
+}, {
+  "category": "Career/Business",
+  "value": 0,
+  "color": chart.colors.next()
+},
+{
+  "category": "Education",
+  "value": 0,
+  "color": chart.colors.next()
+},
+{
+  "category": "Personal Growth",
+  "value": 0,
+  "color": chart.colors.next()
+},
+{
+  "category": "Recreation (hobbies, leisures, pastimes)",
+  "value": 0,
+  "color": chart.colors.next()
+},
+{
+  "category": "Spirituality",
   "value": 0,
   "color": chart.colors.next()
 } ];
@@ -105,6 +125,32 @@ series.dataFields.valueY = "value";
 
 }); // end am4core.ready()
 
+entries = [];
+  entries.push("entry.1337074448");
+  entries.push("entry.662286417");
+  entries.push("entry.673169666");
+  entries.push("entry.845685524");
+  entries.push("entry.219102437");
+  entries.push("entry.413034169");
+  entries.push("entry.509379139");
+  entries.push("entry.534015259");
+  entries.push("entry.1411990280");
+  entries.push("entry.2006595460");
+  entries.push("entry.174238369");
+  entries.push("entry.948818639");
+
+function getUrl(){
+  var url = "https://docs.google.com/forms/d/e/1FAIpQLSdYlgArbuHKfPJ1K5jkNRj4Qv_xIMw_mOcFrOg0kEYmC_Ctvw/viewform?";
+  for (var x = 0;x<12;x++){
+    url = url + entries[x] + "=" + String(chart.data[x].value) + "&";
+  }
+  return url;
+}
+
+function submit_form(){
+  window.open(getUrl(), "_blank").focus();
+}
+
 function setValue(index, value) {
   
   // Set value
@@ -125,7 +171,7 @@ function setValue(index, value) {
 <!-- HTML -->
 <div class="areas">
   <div class="area">
-    <h3>Health</h3>
+    <h3>Physical Environment</h3>
     <div class="values">
       <div class="value" onclick="setValue(0, 1);">1</div>
       <div class="value" onclick="setValue(0, 2);">2</div>
@@ -140,7 +186,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Career</h3>
+    <h3>Physical Health</h3>
     <div class="values">
       <div class="value" onclick="setValue(1, 1);">1</div>
       <div class="value" onclick="setValue(1, 2);">2</div>
@@ -155,7 +201,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Love</h3>
+    <h3>Mental health</h3>
     <div class="values">
       <div class="value" onclick="setValue(2, 1);">1</div>
       <div class="value" onclick="setValue(2, 2);">2</div>
@@ -170,7 +216,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Spirituality</h3>
+    <h3>Family</h3>
     <div class="values">
       <div class="value" onclick="setValue(3, 1);">1</div>
       <div class="value" onclick="setValue(3, 2);">2</div>
@@ -185,7 +231,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Family</h3>
+    <h3>Friendships</h3>
     <div class="values">
       <div class="value" onclick="setValue(4, 1);">1</div>
       <div class="value" onclick="setValue(4, 2);">2</div>
@@ -200,7 +246,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Money</h3>
+    <h3>Romantic relationships</h3>
     <div class="values">
       <div class="value" onclick="setValue(5, 1);">1</div>
       <div class="value" onclick="setValue(5, 2);">2</div>
@@ -215,7 +261,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Fun</h3>
+    <h3>Wealth & finances</h3>
     <div class="values">
       <div class="value" onclick="setValue(6, 1);">1</div>
       <div class="value" onclick="setValue(6, 2);">2</div>
@@ -230,7 +276,7 @@ function setValue(index, value) {
     </div>
   </div>
   <div class="area" style="display: none;">
-    <h3>Friends</h3>
+    <h3>Career / business</h3>
     <div class="values">
       <div class="value" onclick="setValue(7, 1);">1</div>
       <div class="value" onclick="setValue(7, 2);">2</div>
@@ -244,9 +290,71 @@ function setValue(index, value) {
       <div class="value" onclick="setValue(7, 10);">10</div>
     </div>
   </div>
+  <div class="area" style="display: none;">
+    <h3>Education</h3>
+    <div class="values">
+      <div class="value" onclick="setValue(8, 1);">1</div>
+      <div class="value" onclick="setValue(8, 2);">2</div>
+      <div class="value" onclick="setValue(8, 3);">3</div>
+      <div class="value" onclick="setValue(8, 4);">4</div>
+      <div class="value" onclick="setValue(8, 5);">5</div>
+      <div class="value" onclick="setValue(8, 6);">6</div>
+      <div class="value" onclick="setValue(8, 7);">7</div>
+      <div class="value" onclick="setValue(8, 8);">8</div>
+      <div class="value" onclick="setValue(8, 9);">9</div>
+      <div class="value" onclick="setValue(8, 10);">10</div>
+    </div>
+  </div>
+  <div class="area" style="display: none;">
+    <h3>Personal growth</h3>
+    <div class="values">
+      <div class="value" onclick="setValue(9, 1);">1</div>
+      <div class="value" onclick="setValue(9, 2);">2</div>
+      <div class="value" onclick="setValue(9, 3);">3</div>
+      <div class="value" onclick="setValue(9, 4);">4</div>
+      <div class="value" onclick="setValue(9, 5);">5</div>
+      <div class="value" onclick="setValue(9, 6);">6</div>
+      <div class="value" onclick="setValue(9, 7);">7</div>
+      <div class="value" onclick="setValue(9, 8);">8</div>
+      <div class="value" onclick="setValue(9, 9);">9</div>
+      <div class="value" onclick="setValue(9, 10);">10</div>
+    </div>
+  </div>
+  <div class="area" style="display: none;">
+    <h3>Recreation (hobbies, leisures, pastimes)</h3>
+    <div class="values">
+      <div class="value" onclick="setValue(10, 1);">1</div>
+      <div class="value" onclick="setValue(10, 2);">2</div>
+      <div class="value" onclick="setValue(10, 3);">3</div>
+      <div class="value" onclick="setValue(10, 4);">4</div>
+      <div class="value" onclick="setValue(10, 5);">5</div>
+      <div class="value" onclick="setValue(10, 6);">6</div>
+      <div class="value" onclick="setValue(10, 7);">7</div>
+      <div class="value" onclick="setValue(10, 8);">8</div>
+      <div class="value" onclick="setValue(10, 9);">9</div>
+      <div class="value" onclick="setValue(10, 10);">10</div>
+    </div>
+  </div>
+  <div class="area" style="display: none;">
+    <h3>Spirituality</h3>
+    <div class="values">
+      <div class="value" onclick="setValue(11, 1);">1</div>
+      <div class="value" onclick="setValue(11, 2);">2</div>
+      <div class="value" onclick="setValue(11, 3);">3</div>
+      <div class="value" onclick="setValue(11, 4);">4</div>
+      <div class="value" onclick="setValue(11, 5);">5</div>
+      <div class="value" onclick="setValue(11, 6);">6</div>
+      <div class="value" onclick="setValue(11, 7);">7</div>
+      <div class="value" onclick="setValue(11, 8);">8</div>
+      <div class="value" onclick="setValue(11, 9);">9</div>
+      <div class="value" onclick="setValue(11, 10);">10</div>
+    </div>
+  </div>
+
   
   <div class="area" style="display: none;">
     <h3>All done!</h3>
+    <h3><a href="#" onclick="submit_form()">Submit Form </a></h3>
   </div>
 </div>
 <div id="chartdiv"></div>
